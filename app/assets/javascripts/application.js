@@ -12,4 +12,28 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+$(document).ready(function () {
+    $("select#year_select").change(function(){
+        $.ajax({
+            url: "projects/change_session_year",
+            type: "GET",
+            data: {year : $(":selected").attr("value"),
+                id: 1,
+                mode: 'hoge',
+                type: 'entry'
+            },
+            dataType: "script",
+            success: function(data) {
+                console.log(data)
+            },
+            error: function(data) {
+                alert("errror");
+            }
+        });
+    });
+})
+
+
